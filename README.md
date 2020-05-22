@@ -12,7 +12,7 @@ TODO: Description of Filling out the gaps of provided designs
 
 Table of Contents
 =================
- [Loading](#loading)
+ * [Loading](#loading)
  * [Empty state/views](#empty-state-views)
  * [Error handling](#error-handling)
     * [No connection](#no-connection)
