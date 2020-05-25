@@ -13,6 +13,10 @@ TODO: Description of Filling out the gaps of provided designs
 Table of Contents
 =================
  * [Loading](#loading)
+    * [Loading in general](#loading-in-general)
+    * [Form loading](#form-loading)
+    * [Searching](#searching)
+    * [Pull to refresh](#pull-to-refresh)
  * [Empty state/views](#empty-state-views)
  * [Error handling](#error-handling)
     * [No connection](#no-connection)
@@ -28,6 +32,47 @@ Table of Contents
 
 
 ## Loading
+
+### Loading in general
+
+When the app is waiting on the API
+
+| Do                                                                                        | Do not                                                                                | 
+| ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Disable buttons that can interfere with an ongoing action | Avoid blocking navigation when loading, the user should be able to "cancel" actions in case of timeouts or similar |
+| Always provide button states, so the user is aware that buttons are disabled |  |
+
+### Form loading
+
+When the app takes input and sends input to API such as a login or settings screen.
+
+| Do                                                                                        | Do not                                                                                | 
+| ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Disable all input fields or hide them while waiting for a response | Overlay the input fields with a loader |
+| Disable buttons while loading so only one request is sent  | Overlay the input fields with a loader |
+| Hide the keyboard | |
+
+
+### Searching
+
+When the app takes search strings and maybe provides autocomplete
+
+| Do                                                                                        | Do not                                                                                | 
+| ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Limit searches to at least 2 characters or more | Start searching immediately |
+| Debounce/throttle searches to once every 2 seconds or so, this will easy the API load, but also simplify client state | Send a request for every character written |
+| Cancel any outbound request when starting a new search, so we avoid response A being received after response B  | Overlay the input fields with a loader |
+| Show a loader whenever a request is in flight, so the user is aware of incoming results | Only show results without a loader, the user will potentially misclick when the results switches |
+
+### Pull to refresh
+
+When a list is reloading content. **We should always implement pull to refresh in lists with changing data.**
+
+| Do                                                                                        | Do not                                                                                | 
+| ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Use platform standards so the behaviour is familiar to the user | Implement an additional blocking loader if pull to refresh is available. Programmatically show the pull to refresh loader if manual refresh is being done |
+| Merge/diff results so the list is partly updated or even animated with changes |  |
+
 
 ## Empty state/views
 
@@ -87,14 +132,10 @@ When validating input fields.
 | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | Validate on leaving the input field, not on form submit                                   | Present an error dialog                                                               |
 | Present the error at the input field                                                      | Block the UI with an error overlay                                                    |
-| Explain what the requirements for the fields are, or what is wrong with the current       | Clear the input fields if a field is invalid                                          |
-input                                                                                       | Clear the input field when entering an input field again                              |
-| Submit button is disabled/hidden until all required fields are valid. Guide the user 
-to fix errors in the space where the button will be.                                        |                                                                                       |
-| If there's more than one error, consider adding a summary at the bottom of the form, 
-to let the user know where the errors are.                                                  |                                                                                       |
-| If validation can only be done on submit, a non-invasive loading spinner should be 
-shown until the data has been validated and errors should be shown as stated above.         |                                                                                       | 
+| Explain what the requirements for the fields are, or what is wrong with the current input | Clear the input fields if a field is invalid                                          |
+| Submit button is disabled/hidden until all required fields are valid. Guide the user to fix errors in the space where the button will be. | Clear the input field when entering an input field again                              |
+| If there's more than one error, consider adding a summary at the bottom of the form, to let the user know where the errors are |                                                                                       |
+| If validation can only be done on submit, a non-invasive loading spinner should be shown until the data has been validated and errors should be shown as stated above.         |                                                                                       | 
 ### Login error
 
 When an error happens on login (or invalid login credentials).
@@ -122,8 +163,7 @@ If the login token expired and the user opens the app.
 
 | Do                                                                                        | Do not                                                                                | 
 | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| Show error page explaining that its time to log in again, for security reasons 
-(Consider this being an overlay or popup to keep the user in a familiar setting)            | Open on the sign-in page                                                              |
+| Show error page explaining that its time to log in again, for security reasons (Consider this being an overlay or popup to keep the user in a familiar setting)            | Open on the sign-in page                                                              |
 | Button to sign in again (Goes to the standard login screen)                               | Stay in the app and show loading errors                                               |
 
 ## Transitions
