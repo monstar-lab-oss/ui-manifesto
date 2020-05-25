@@ -26,9 +26,9 @@ Table of Contents
     * [Form validation](#form-validation)
     * [Background error](#background-error)
     * [Login token expired](#login-token-expired)
- * [Transitions](#empty-state-views)
- * [Animations](#empty-state-views)
- * [Responsive design](#empty-state-views)
+ * [Transitions](#transitions)
+ * [Animations](#animations)
+ * [Responsive design](#responsive-design)
 
 
 ## Loading
