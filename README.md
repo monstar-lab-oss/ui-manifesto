@@ -8,7 +8,9 @@ link: https://github.com/monstar-lab-group/ui-manifesto
 
 # UI Manifesto
 
-TODO: Description of Filling out the gaps of provided designs
+Normally designs are delivered as frozen versions of an interactive app. This document tries to outline some of the gaps in a static design file in Zeplin and specs out what is the baseline for a great app.
+
+In each section there is a _Do_ and _Do not_ list to highlight some of the things to be aware of and what to avoid doing.
 
 Table of Contents
 =================
