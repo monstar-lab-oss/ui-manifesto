@@ -14,6 +14,7 @@ In each section there is a _Do_ and _Do not_ list to highlight some of the thing
 
 Table of Contents
 =================
+ * [Zeplin Export](#zeplin-export)
  * [Loading](#loading)
     * [Loading in general](#loading-in-general)
     * [Form loading](#form-loading)
@@ -32,6 +33,15 @@ Table of Contents
  * [Animations](#animations)
  * [Responsive design](#responsive-design)
 
+## Zeplin Export
+
+When exporting designs to Zeplin
+
+| Do                                                                                        | Do not                                                                                | 
+| ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| [Sections](https://support.zeplin.io/en/articles/1396666-organizing-screens-with-sections) | Avoid floating point numbers in dimensions |
+| [Color Pallettes](https://support.zeplin.io/en/articles/1444421-organizing-styleguide-colors) |  |
+| [Text Style Catalogs](https://support.zeplin.io/en/articles/1504520-organizing-styleguide-text-styles) |  |
 
 ## Loading
 
