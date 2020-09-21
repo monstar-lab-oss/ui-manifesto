@@ -37,17 +37,17 @@ Table of Contents
  * [Accessibility](#accessibility)
 
 ## Authentication
-| Do                                                                             | Don't                                                                                    |
+| Do                                                                             | Do not                                                                                    |
 |--------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
-| Support biometric authentication when possible                                | Don't ask for both password and biometry in the same login flow to authenticate the user |
-| Reference authentication methods accurately based on the device’s capabilities | Don't reference Face ID on devices that support only Touch ID, and the other way around  |
+| Support biometric authentication when possible                                | Ask for both password and biometry in the same login flow to authenticate the user |
+| Reference authentication methods accurately based on the device’s capabilities | Reference Face ID on devices that support only Touch ID, and the other way around  |
 | Handle the scenario of biometry being disabled by the users                    |                                                                                          |
 | Provide password auto fill functionality                                       |                                                                                          |
 
 ## Data entry
 | Do                                                                                                                                                                            | Don't                                                        |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
-| Provide a list of predefined options to speed up the process when possible                                                                                                    | Don't make fields required if it's not really neccesary      |
+| Provide a list of predefined options to speed up the process when possible                                                                                                    | Make fields required if it's not really neccesary      |
 | Provide an easy way to navigate thought lists of options, for example sort the lists alphabetically or in another logical matter that can speed up the selection for the user |                                                              |
 | Provide hints and placeholders to help communicate the purpose                                                                                                                |                                                              |
 | Provide reasonable default values                                                                                                                                             |                                                              |
@@ -63,7 +63,7 @@ Table of Contents
 
 When the app is waiting on the API
 
-| Do                                                                                                                        | Don't                                                                                                              |
+| Do                                                                                                                        | Do not                                                                                                              |
 |---------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
 | Disable buttons that can interfere with an ongoing action                                                                 | Avoid blocking navigation when loading, the user should be able to "cancel" actions in case of timeouts or similar |
 | Always provide button states, so the user is aware that buttons are disabled                                              |                                                                                                                    |
@@ -107,9 +107,9 @@ When a list is reloading content. **We should always implement pull to refresh i
 ## Empty state and views
 | Do                                                                                                                                                   | Don't                                                                                          |
 |------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
-| Show clear and short information about why there is no data                                                                                          | Don't leave empty spaces in the view where there is a section with no data, adapt your screens |
-| Give the users hints on what they can do to see data as some views will depend on user actions                                                       | Don't show error state for empty state                                                         |
-| Add scroll views when the design might not fit smaller devices                                                                                       | Don't present an blank view                                                                    |
+| Show clear and short information about why there is no data                                                                                          | Leave empty spaces in the view where there is a section with no data, adapt your screens |
+| Give the users hints on what they can do to see data as some views will depend on user actions                                                       | Show error state for empty state                                                         |
+| Add scroll views when the design might not fit smaller devices                                                                                       | Present an blank view                                                                    |
 | Adhere to safe areas and other system layout guidelines                                                                                              |                                                                                                |
 | If possible, support both portrait and landscape orientations                                                                                        |                                                                                                |
 | Have a clear agreement between backend and frontend developers of what data can be missing and how will that be represented in the backend responses |                                                                                                |
@@ -207,23 +207,23 @@ If the login token expired and the user opens the app.
 | Button to sign in again (Goes to the standard login screen)                               | Stay in the app and show loading errors                                               |
 
 ## Transitions
-| Do                                                        | Don't |
+| Do                                                        | Do not |
 |-----------------------------------------------------------|-------|
 | Use native transitions                                    |       |
 | Only use custom transitions if specified by designers     |       |
 | Keep transitions consistent for views with same behaviour |       |
 
 ## Animations
-| Do                                                               | Don't                                                                                                         |
+| Do                                                               | Do not                                                                                                     |
 |------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
 | Add subtle animations only if they provide a benefit to the user | Use animations just for the sake of animations. Excessive and out of place animations can distract the users. |
 | Keep the animation styles consistent across the app              |                                                                                                               |
 | Strive to use the built in animations of the platform            |                                                                                                               |
 
 ## Audio
-| Do                                                           | Don't                                           |
+| Do                                                           | Do not                                          |
 |--------------------------------------------------------------|-------------------------------------------------|
-| Use sounds effects in the app only if specified by designers | Do not add non essential sounds effects to apps |
+| Use sounds effects in the app only if specified by designers | Add non essential sounds effects to apps |
 
 ## Responsive design
 | Do                                                             | Don't |
