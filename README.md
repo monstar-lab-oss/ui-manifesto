@@ -221,10 +221,9 @@ If the login token expired and the user opens the app.
 | Strive to use the built in animations of the platform            |                                                                                                               |
 
 ## Audio
-| Do | Don't                                                           |
-|----|-----------------------------------------------------------------|
-|    | Do use sounds effects in the app only if specified by designers |
-|    | Do not add non essential sounds effects to apps                 |
+| Do                                                           | Don't                                           |
+|--------------------------------------------------------------|-------------------------------------------------|
+| Use sounds effects in the app only if specified by designers | Do not add non essential sounds effects to apps |
 
 ## Responsive design
 | Do                                                               | Don't                                                                                                         |
