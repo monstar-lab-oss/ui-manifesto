@@ -226,11 +226,13 @@ If the login token expired and the user opens the app.
 | Use sounds effects in the app only if specified by designers | Do not add non essential sounds effects to apps |
 
 ## Responsive design
-| Do                                                               | Don't                                                                                                         |
-|------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
-| Add subtle animations only if they provide a benefit to the user | Use animations just for the sake of animations. Excessive and out of place animations can distract the users. |
-| Keep the animation styles consistent across the app              |                                                                                                               |
-| Strive to use the built in animations of the platform            |                                                                                                               |
+| Do                                                             | Don't |
+|----------------------------------------------------------------|-------|
+| Develop your screens with responsiveness in mind               |       |
+| Preview your app on multiple devices                           |       |
+| Add scroll views when the design might not fit smaller devices |       |
+| Adhere to safe areas and other system layout guidelines        |       |
+| If possible, support both portrait and landscape orientations  |       |
 
 ## Accessibility
 | Do                                                                            | Don't |
