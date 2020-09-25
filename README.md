@@ -14,24 +14,48 @@ In each section there is a _Do_ and _Do not_ list to highlight some of the thing
 
 Table of Contents
 =================
+ * [Authentication](#authentication)
+ * [Data entry](#data-entry)
  * [Loading](#loading)
     * [Loading in general](#loading-in-general)
     * [Form loading](#form-loading)
     * [Searching](#searching)
     * [Pull to refresh](#pull-to-refresh)
- * [Empty state/views](#empty-state-views)
+ * [Empty state and views](#empty-state-and-views)
  * [Error handling](#error-handling)
     * [No connection](#no-connection)
-    * [Failed loading the view - no data to show](#failed-loading-the-view-no-data-to-show)
+    * [Failed loading the view due to no data to show](#failed-loading-the-view-due-to-no-data-to-show)
     * [Failed to refresh list or content](#failed-to-refresh-list-or-content)
-    * [No content/search result error](#no-content-search-result-error)
+    * [No content due to search result error](#no-content-due-to-search-result-error)
     * [Form validation](#form-validation)
     * [Background error](#background-error)
     * [Login token expired](#login-token-expired)
  * [Transitions](#transitions)
  * [Animations](#animations)
+ * [Audio](#audio)
  * [Responsive design](#responsive-design)
+ * [Accessibility](#accessibility)
 
+## Authentication
+| Do                                                                             | Do not                                                                                    |
+|--------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
+| Support biometric authentication when possible                                | Ask for both password and biometry in the same login flow to authenticate the user |
+| Reference authentication methods accurately based on the device’s capabilities | Reference Face ID on devices that support only Touch ID, and the other way around  |
+| Handle the scenario of biometry being disabled by the users                    |                                                                                          |
+| Provide password auto fill functionality                                       |                                                                                          |
+
+## Data entry
+| Do                                                                                                                                                                            | Don't                                                        |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| Provide a list of predefined options to speed up the process when possible                                                                                                    | Make fields required if it's not really neccesary      |
+| Provide an easy way to navigate thought lists of options, for example sort the lists alphabetically or in another logical matter that can speed up the selection for the user |                                                              |
+| Provide hints and placeholders to help communicate the purpose                                                                                                                |                                                              |
+| Provide reasonable default values                                                                                                                                             |                                                              |
+| Enable buttons to continue only after all required data is entered                                                                                                            |                                                              |
+| Use enabled/disabled buttons as a cue that the user can proceed                                                                                                               |                                                              |
+| Dynamically validate fields, when possible check values immediately so users can correct them right away                                                                      |                                                              |
+| Provide the appropriate keyboards based on the data needed (Alphabet, Numeric, Email, etc.)                                                                                   |                                                              |
+| Dismiss keyboards when tapping outside the field                                                                                                                              |                                                              |
 
 ## Loading
 
@@ -39,10 +63,14 @@ Table of Contents
 
 When the app is waiting on the API
 
-| Do                                                                                        | Do not                                                                                | 
-| ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| Disable buttons that can interfere with an ongoing action | Avoid blocking navigation when loading, the user should be able to "cancel" actions in case of timeouts or similar |
-| Always provide button states, so the user is aware that buttons are disabled |  |
+| Do                                                                                                                        | Do not                                                                                                              |
+|---------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| Disable buttons that can interfere with an ongoing action                                                                 | Avoid blocking navigation when loading, the user should be able to "cancel" actions in case of timeouts or similar |
+| Always provide button states, so the user is aware that buttons are disabled                                              |                                                                                                                    |
+| Make it clear when the loading is occurring                                                                               |                                                                                                                    |
+| Show activity spinners or skeleton views when the content is loading                                                      |                                                                                                                    |
+| If the loading time is longer, provide progress, like for example file uploads                                            |                                                                                                                    |
+| Do not make the users wait for content to load before seeing the screen, show the screen immediately with a loading state |                                                                                                                    |                                   |       |
 
 ### Form loading
 
@@ -76,7 +104,16 @@ When a list is reloading content. **We should always implement pull to refresh i
 | Merge/diff results so the list is partly updated or even animated with changes |  |
 
 
-## Empty state/views
+## Empty state and views
+| Do                                                                                                                                                   | Don't                                                                                          |
+|------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| Show clear and short information about why there is no data                                                                                          | Leave empty spaces in the view where there is a section with no data, adapt your screens |
+| Give the users hints on what they can do to see data as some views will depend on user actions                                                       | Show error state for empty state                                                         |
+| Add scroll views when the design might not fit smaller devices                                                                                       | Present an blank view                                                                    |
+| Adhere to safe areas and other system layout guidelines                                                                                              |                                                                                                |
+| If possible, support both portrait and landscape orientations                                                                                        |                                                                                                |
+| Have a clear agreement between backend and frontend developers of what data can be missing and how will that be represented in the backend responses |                                                                                                |
+| If a view is composed of multiple sections, make sure that the view looks good even if parts of data are missing                                     |                                                                                                |
 
 ## Error handling
 
@@ -91,7 +128,7 @@ When the app does not have an internet connection.
 |                                                                                           | Present a blank view                                                                  |
 |                                                                                           | Present an empty state view                                                           | 
 
-### Failed loading the view - no data to show
+### Failed loading the view due to no data to show
 
 When an entire view can't be loaded.
 
@@ -115,7 +152,7 @@ When a list of elements is updating and an error occur.
 |                                                                                           | Present a blank view                                                                  |
 |                                                                                           | Present an empty state view                                                           |
 
-### No content/search result error
+### No content due to search result error
 
 When there is no content to load.
 
@@ -138,6 +175,7 @@ When validating input fields.
 | Submit button is disabled/hidden until all required fields are valid. Guide the user to fix errors in the space where the button will be. | Clear the input field when entering an input field again                              |
 | If there's more than one error, consider adding a summary at the bottom of the form, to let the user know where the errors are |                                                                                       |
 | If validation can only be done on submit, a non-invasive loading spinner should be shown until the data has been validated and errors should be shown as stated above.         |                                                                                       | 
+
 ### Login error
 
 When an error happens on login (or invalid login credentials).
@@ -169,8 +207,37 @@ If the login token expired and the user opens the app.
 | Button to sign in again (Goes to the standard login screen)                               | Stay in the app and show loading errors                                               |
 
 ## Transitions
+| Do                                                        | Do not |
+|-----------------------------------------------------------|-------|
+| Use native transitions                                    |       |
+| Only use custom transitions if specified by designers     |       |
+| Keep transitions consistent for views with same behaviour |       |
 
 ## Animations
+| Do                                                               | Do not                                                                                                     |
+|------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| Add subtle animations only if they provide a benefit to the user | Use animations just for the sake of animations. Excessive and out of place animations can distract the users. |
+| Keep the animation styles consistent across the app              |                                                                                                               |
+| Strive to use the built in animations of the platform            |                                                                                                               |
+
+## Audio
+| Do                                                           | Do not                                          |
+|--------------------------------------------------------------|-------------------------------------------------|
+| Use sounds effects in the app only if specified by designers | Add non essential sounds effects to apps |
 
 ## Responsive design
+| Do                                                             | Don't |
+|----------------------------------------------------------------|-------|
+| Develop your screens with responsiveness in mind               |       |
+| Preview your app on multiple devices                           |       |
+| Add scroll views when the design might not fit smaller devices |       |
+| Adhere to safe areas and other system layout guidelines        |       |
+| If possible, support both portrait and landscape orientations  |       |
 
+## Accessibility
+| Do                                                                            | Don't |
+|-------------------------------------------------------------------------------|-------|
+| Provide ample touch targets for interactive elements                          |       |
+| If you use animations, make them optional to give the option to reduce motion |       |
+| Provide dark mode support                                                     |       |
+| Provide support for dynamic type sizes                                        |       |
